@@ -41,7 +41,7 @@ export default function Home() {
   }
 
   return (
-    <div className="p-8 max-w-3xl mx-auto">
+    <div className="p-6 max-w-3xl mx-auto">
       <h1 className="text-3xl font-bold mb-4">TinyLink Dashboard</h1>
 
       {/* Create Form */}
@@ -79,6 +79,7 @@ export default function Home() {
             <th className="p-2">Code</th>
             <th className="p-2">Target</th>
             <th className="p-2">Clicks</th>
+            <th className="p-2">Last Accessed</th>
             <th className="p-2">Actions</th>
           </tr>
         </thead>
@@ -89,7 +90,7 @@ export default function Home() {
               <td className="p-2">
                 <a
                   className="text-blue-600"
-                  href={`${process.env.NEXT_PUBLIC_API_URL}/${l.code}`}
+                  href={`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/${l.code}`}
                   target="_blank"
                 >
                   {l.code}
@@ -99,15 +100,12 @@ export default function Home() {
               <td className="p-2 truncate max-w-xs">{l.target}</td>
 
               <td className="p-2 text-center">{l.clicks}</td>
+              <td className="p-2 text-center">{l.last_clicked 
+                                ? new Date(l.last_clicked).toLocaleString()
+                  : "Never"}
+              </td>
 
               <td className="p-2">
-                <a
-                  className="text-sm text-purple-600 mr-3"
-                  href={`/link/${l.code}`}
-                >
-                  Stats
-                </a>
-
                 <button
                   className="text-red-600"
                   onClick={() => handleDelete(l.code)}

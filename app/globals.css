@@ -24,3 +24,10 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+td {
+  max-width: 300px;        
+  white-space: normal;     
+  word-wrap: break-word;   
+  word-break: break-all;   
+}
